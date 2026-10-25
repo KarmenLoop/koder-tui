@@ -55,9 +55,14 @@ try {
   $Source = Join-Path $Temp 'koder-tui'
   & (Join-Path $Source 'runtime/node.exe') (Join-Path $Source 'packages/koder-tui/bin/koder-tui.mjs') --version
   if ($LASTEXITCODE -ne 0) { throw 'Runtime verification failed.' }
-  $Dest = Join-Path $InstallRoot ("versions/$Version." + [Guid]::NewGuid().ToString('N'))
-  New-Item -ItemType Directory -Path $Dest -Force | Out-Null
-  Copy-Item "$Source/*" $Dest -Recurse
+  $Dest = Join-Path $InstallRoot ("versions/$Version." + [Guid]::NewGuid().ToString('N').Substring(0,12))
+  New-Item -ItemType Directory -Path (Split-Path $Dest -Parent) -Force | Out-Null
+  if ([IO.Path]::GetPathRoot($Source) -eq [IO.Path]::GetPathRoot($Dest)) {
+    [IO.Directory]::Move($Source, $Dest)
+  } else {
+    New-Item -ItemType Directory -Path $Dest | Out-Null
+    Copy-Item "$Source/*" $Dest -Recurse
+  }
   $Bin = Join-Path $InstallRoot 'bin'
   New-Item -ItemType Directory -Path $Bin -Force | Out-Null
   $Launcher = Join-Path $Bin 'koder-tui.cmd'
