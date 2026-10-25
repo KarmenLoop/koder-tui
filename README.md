@@ -32,8 +32,12 @@ bash koder-tui.sh
 
 **Windows PowerShell**
 ```powershell
-Invoke-WebRequest -UseBasicParsing https://github.com/KarmenLoop/koder-tui/releases/download/tui-0.3.0/koder-tui.ps1 -OutFile koder-tui.ps1
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\koder-tui.ps1
+curl.exe --fail --location --retry 3 --connect-timeout 20 --output koder-tui.ps1 https://karmenloop.com/install/tui-0.3.0/koder-tui.ps1
+if ($LASTEXITCODE -eq 0 -and (Test-Path .\koder-tui.ps1)) {
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\koder-tui.ps1
+} else {
+  Write-Error 'Download failed. Installation stopped.'
+}
 ```
 
 Review the script and license before running it. The installer verifies the archive's SHA-256, installs under your user account, and leaves an existing `koder` command intact. Reopen your terminal after installation. On macOS, add `~/.local/bin` to PATH if it is not already there.

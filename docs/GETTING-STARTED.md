@@ -63,3 +63,7 @@ If startup fails, capture `koder-tui --version`, OS and terminal versions, and t
 ## Validation scope
 
 The release notes list actual package and CI results. Local PTY tests cover composer persistence, steering, Todo, undo and terminal restoration using a controlled provider. They do not establish real-provider, account-write, device migration, Windows GUI, IME or accessibility acceptance. External ACP adapters may not implement Todo/undo; their original execution interface remains available.
+
+## Windows download errors
+
+If PowerShell reports an unexpectedly closed connection, the script has not downloaded. Do not run -File on a missing file. Download [the CMD installer](https://karmenloop.com/install/tui-0.3.0/koder-tui.cmd) in your browser and open it, or follow the curl.exe command in the README. The installer enables TLS 1.2, retries downloads, falls back to curl.exe, and tries the official site and GitHub. It stops if both sources fail. Do not disable certificate validation. A managed network may require its normal proxy configuration.
