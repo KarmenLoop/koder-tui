@@ -1,0 +1,31 @@
+name: Release package checks
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, macos-15-intel]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.23.3'
+      - name: Download pinned release package
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PLATFORM=$(node -p 'process.platform === "win32" ? "windows-x64.zip" : "macos-" + process.arch + ".tar.gz"')
+          gh release download tui-0.3.0 --repo KarmenLoop/koder-tui --dir artifacts --pattern "koder-tui-0.3.0-$PLATFORM" --pattern SHA256SUMS
+      - name: Verify archive, modules, tests and installer
+        run: node scripts/verify-package.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-${{ matrix.os }}
+          path: artifacts/validation-*.json

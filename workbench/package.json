@@ -1,0 +1,11 @@
+{
+  "name": "koder-tui",
+  "version": "0.3.0",
+  "description": "An independent terminal workbench using the complete Koder CLI runtime",
+  "type": "module",
+  "private": true,
+  "license": "Koder-EULA-1.1",
+  "bin": {"koder-tui": "bin/koder-tui.mjs"},
+  "engines": {"node": "^22.21.0 || >=24.0.0"},
+  "scripts": {"start": "node bin/koder-tui.mjs", "test": "node --test --test-timeout=30000 test/*.test.mjs"}
+}
