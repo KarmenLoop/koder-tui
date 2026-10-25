@@ -31,12 +31,17 @@ bash koder-tui.sh
 ```
 
 **Windows PowerShell**
+
+Download [the Windows installer](https://karmenloop.com/install/tui-0.3.0/koder-tui.cmd) in your browser and open it, or run:
+
 ```powershell
-curl.exe --fail --location --retry 3 --connect-timeout 20 --output koder-tui.ps1 https://karmenloop.com/install/tui-0.3.0/koder-tui.ps1
-if ($LASTEXITCODE -eq 0 -and (Test-Path .\koder-tui.ps1)) {
-  powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\koder-tui.ps1
-} else {
-  Write-Error 'Download failed. Installation stopped.'
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+$installer = Join-Path $env:TEMP ('koder-tui-' + [guid]::NewGuid().ToString('N') + '.ps1')
+try {
+  Invoke-WebRequest -UseBasicParsing https://karmenloop.com/install/tui-0.3.0/koder-tui.ps1 -OutFile $installer -ErrorAction Stop
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -File $installer
+} catch {
+  Write-Error 'Download failed. Open the Windows installer link in your browser.'
 }
 ```
 
