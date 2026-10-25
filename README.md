@@ -1,6 +1,10 @@
 # Koder TUI
 
+[![License: Koder-EULA-1.1](https://img.shields.io/badge/license-Koder--EULA--1.1-orange)](EULA.md)
+
 An independent terminal workbench for Koder. Keep writing while an agent works, steer the current turn, order the next tasks, and follow a live checklist without losing the conversation.
+
+**Koder TUI uses the same proprietary [Koder-EULA-1.1](EULA.md) agreement as [Koder CLI](https://github.com/KarmenLoop/koder-cli/blob/main/EULA.md).** Personal, noncommercial local use is free. Commercial use, organizational deployment, modification of the proprietary implementation and redistribution require separate written permission, subject to the exceptions in that agreement. Public downloads do not grant an open-source license.
 
 **0.3.0 · Windows x64 · macOS Apple Silicon and Intel**  
 [Download](https://github.com/KarmenLoop/koder-tui/releases/tag/tui-0.3.0) · [Website](https://karmenloop.com/tui.html) · [Installation and usage](docs/GETTING-STARTED.md) · [Release notes](RELEASE-NOTES.md)
@@ -55,7 +59,7 @@ Run `koder-tui -- setup` to configure a model, or reuse an existing Koder profil
 
 Re-run the current TUI installer to update the workbench. TUI and CLI have separate release versions. CLI `/update`, automatic-update settings and `/uninstall` retain their original CLI behavior and can act on an existing CLI installation; they do not manage the TUI archive. If an updated CLI lacks embedding API 2, the saved conversation continues in its native terminal. Restart `koder-tui` to reopen this bundled workbench. See the installation guide before removing either product.
 
-This repository contains the workbench interface, installers, release checks and documentation. Full runtime distributions, including the bundled kernel and third-party files, are release assets. The interface is source-available under the included Koder license; it is not an open-source grant.
+This public repository provides installers, release checks, documentation and licensing notices. New proprietary development source is maintained outside the public branch. Runtime distributions, including readable scripts needed to run the product, are release assets under the applicable licenses. Earlier commits remain accessible; see [source status](SOURCE-STATUS.md) for the exact boundary.
 
 ## License and support
 

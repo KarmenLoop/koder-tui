@@ -1,5 +1,9 @@
 # 版权、下载使用与国际用户说明 / Copyright, download and international-use notice
 
+> Koder TUI 0.3.0 与当前 Koder CLI 采用同一份 Koder-EULA-1.1 专有许可。个人非商业本地使用免费；商业使用、组织内部工作或部署、自有实现的修改及再分发须按协议取得单独书面授权。下列一般说明不扩大该授权。
+>
+> Koder TUI 0.3.0 uses the same proprietary Koder-EULA-1.1 agreement as the current Koder CLI. Personal, noncommercial local use is free. Commercial use, internal organizational work or deployment, proprietary implementation changes and redistribution require separate written permission under the agreement. The general notice below does not expand that grant.
+
 说明版本 / Notice revision: 2026-10-20
 
 ## 中文

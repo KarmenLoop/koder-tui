@@ -1,9 +1,9 @@
-Koder license scope — policy revised 2026-10-20
+Koder TUI license scope — aligned with Koder CLI on 2026-10-26
 Copyright © KARMEN / Koder and the respective copyright holders.
 
 NEW PROPRIETARY DISTRIBUTIONS
 
-Koder-owned portions of future official distributions that expressly identify
+Koder TUI-owned implementation and official distributions that expressly identify
 Koder-EULA-1.1 are offered under EULA.md. End users may download, install and
 use them for personal, noncommercial activities, with the permitted
 backups, updates and customization stated there. Commercial use and internal
@@ -13,12 +13,14 @@ subject to the exceptions and mandatory rights described in that agreement.
 
 LEGACY PUBLIC CLI SOURCE AND PREVIOUSLY DISTRIBUTED VERSIONS
 
-The CLI source published in this repository at or before commit
+The CLI source published in https://github.com/KarmenLoop/koder-cli at or before commit
 54e17fcf484638f6cf22a48b52a0533c82816191 (including public source version 0.3.1)
 retains GNU GPL version 3 and the limited permission in LICENSE-EXCEPTION.txt.
 The complete, unchanged GPL text is in licenses/legacy-cli/GPL-3.0.txt.
-Versions already distributed, including the previously published 0.3.0
-installer, retain their applicable original licenses. EULA.md does not revoke
+Earlier CLI versions already distributed, including its previously published
+0.3.0 installer, retain their applicable original licenses. That legacy CLI
+version is distinct from Koder TUI 0.3.0, which identifies Koder-EULA-1.1.
+EULA.md does not revoke
 those grants or impose new restrictions on those copies. Existing GPL source
 is not made confidential by this policy change.
 
@@ -31,9 +33,11 @@ source obligations, or rights that cannot be excluded under applicable law.
 
 PUBLISHING AND DOWNLOADS
 
-The public repository remains a place for download instructions, agreements,
-notices and legacy source. Future proprietary development source is not to be
-published here. Updating this notice does not publish or update an installer.
-See DISTRIBUTION.md and RELEASE_STATUS.md for the release distinction.
+This public repository provides download instructions, agreements, notices,
+installers and release verification. New proprietary development source is
+maintained outside the public branch. Earlier commits remain accessible;
+removing files from the current branch does not erase historical copies.
+Updating this notice does not change previously granted rights or replace an
+installer. See SOURCE-STATUS.md and RELEASE-NOTES.md for the release distinction.
 
 Contact: info@karmenloop.com

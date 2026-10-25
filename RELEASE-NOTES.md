@@ -2,6 +2,8 @@
 
 Koder TUI brings the complete Koder CLI 0.4.12 runtime into an independent terminal workbench. Windows x64, macOS Apple Silicon and Intel archives include Node.js 22.23.3.
 
+The Koder-owned implementation uses the same proprietary Koder-EULA-1.1 agreement as Koder CLI. Personal, noncommercial local use is free. Commercial use, organizational deployment, changes to proprietary implementation and redistribution require separate written permission under that agreement. Third-party and legacy GPL rights remain intact. See [source status](SOURCE-STATUS.md) for the public repository boundary and earlier source commits.
+
 The composer stays available during streaming. Ctrl-S steers the active turn, while Esc and Ctrl-C interrupt without exiting. Queue future prompts, reorder them, expand the session Todo with Ctrl-T, and restore conversation and Todo metadata with /undo. The configurable status line includes model, context, workspace and rotating shortcut tips. /help contains 79 entries and Ctrl-P exposes 58 original CLI routes. A transparent refracting loop provides ambient motion.
 
 Installation is per-user and retains an existing CLI command and profile. The full runtime, its business modules, KARMEN LOOP engine, documentation and third-party notices ship in every archive. No model credential or external permission is bundled.

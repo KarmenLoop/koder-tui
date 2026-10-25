@@ -26,10 +26,7 @@ const env={...process.env,KODER_AUTO_UPDATE:'0',TERM:'xterm-256color',KODER_CLI_
 if(!(await run(node,[entry,'--version'],{env})).includes('koder-tui 0.3.0 (CLI 0.4.12)'))throw Error('Wrong version');
 const modules=JSON.parse(await run(node,[entry,'--list-modules','--json'],{env}));if(modules.length!==58)throw Error('Missing CLI routes');
 await run(node,[entry,'--','help'],{env});results.push('bundled_node_version_and_58_cli_routes');
-const tests=path.join(pkg,'packages/koder-tui/test');
-fs.cpSync(path.join(root,'workbench/test'),tests,{recursive:true});
-fs.cpSync(path.join(root,'test-runtime-support'),path.join(pkg,'packages/koder-cli/test'),{recursive:true});
-await run(node,['--test','--test-timeout=30000',...fs.readdirSync(tests).filter(n=>n.endsWith('.test.mjs')).map(n=>path.join(tests,n))],{env});results.push('workbench_regression');
+// Private regression suites run before publication. This public check validates release artifacts.
 const server=http.createServer((req,res)=>{
  const file=path.basename(new URL(req.url,'http://localhost').pathname);
  if(![name,'SHA256SUMS'].includes(file)){res.writeHead(404).end();return}

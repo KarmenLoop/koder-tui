@@ -1,3 +1,6 @@
 node_modules/
 .DS_Store
 artifacts/
+workbench/
+test-runtime-support/
+private-source/
