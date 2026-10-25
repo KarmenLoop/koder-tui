@@ -49,12 +49,9 @@ try {
   if ($Rows.Count -ne 1) { throw 'Missing or ambiguous checksum.' }
   $Expected = $Rows[0].Split(' ')[0]
   if ((Get-FileHash (Join-Path $Temp $File) -Algorithm SHA256).Hash.ToLowerInvariant() -ne $Expected) { throw 'Checksum mismatch.' }
-  if (Get-Command tar.exe -ErrorAction SilentlyContinue) {
-    & tar.exe -xf (Join-Path $Temp $File) -C $Temp
-    if ($LASTEXITCODE -ne 0) { throw 'Archive extraction failed.' }
-  } else {
-    Expand-Archive -LiteralPath (Join-Path $Temp $File) -DestinationPath $Temp
-  }
+  # .NET handles UTF-8 archive entry names without depending on the console code page.
+  Add-Type -AssemblyName System.IO.Compression.FileSystem
+  [IO.Compression.ZipFile]::ExtractToDirectory((Join-Path $Temp $File), $Temp)
   $Source = Join-Path $Temp 'koder-tui'
   & (Join-Path $Source 'runtime/node.exe') (Join-Path $Source 'packages/koder-tui/bin/koder-tui.mjs') --version
   if ($LASTEXITCODE -ne 0) { throw 'Runtime verification failed.' }

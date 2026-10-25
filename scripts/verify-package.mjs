@@ -17,7 +17,7 @@ async function run(bin,args,options={}){
  const code=await new Promise((resolve,reject)=>{child.once('error',reject);child.once('exit',resolve)});clearTimeout(timer);
  if(code!==0)throw Error(`${bin} exited ${code}`);return output;
 }
-if(process.platform==='win32')await run('tar.exe',['-xf',path.join(dir,name),'-C',dir],{timeoutMs:600000});
+if(process.platform==='win32')await run('powershell.exe',['-NoProfile','-Command',`$ErrorActionPreference='Stop'; Add-Type -AssemblyName System.IO.Compression.FileSystem; [IO.Compression.ZipFile]::ExtractToDirectory('${path.join(dir,name).replaceAll("'","''")}','${dir.replaceAll("'","''")}')`],{timeoutMs:600000});
 else await run('tar',['-xzf',path.join(dir,name),'-C',dir]);
 results.push('archive_checksum_and_extraction');
 const pkg=path.join(dir,'koder-tui'),node=path.join(pkg,process.platform==='win32'?'runtime/node.exe':'runtime/bin/node'),entry=path.join(pkg,'packages/koder-tui/bin/koder-tui.mjs');
