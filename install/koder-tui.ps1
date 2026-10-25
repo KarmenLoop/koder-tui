@@ -48,7 +48,11 @@ try {
   $Rows = @(Get-Content (Join-Path $Temp 'SHA256SUMS') | Where-Object { $_ -match ('^[0-9a-f]{64}  ' + [regex]::Escape($File) + '$') })
   if ($Rows.Count -ne 1) { throw 'Missing or ambiguous checksum.' }
   $Expected = $Rows[0].Split(' ')[0]
-  if ((Get-FileHash (Join-Path $Temp $File) -Algorithm SHA256).Hash.ToLowerInvariant() -ne $Expected) { throw 'Checksum mismatch.' }
+  $Hasher = [Security.Cryptography.SHA256]::Create()
+  $Stream = [IO.File]::OpenRead((Join-Path $Temp $File))
+  try { $Actual = [BitConverter]::ToString($Hasher.ComputeHash($Stream)).Replace('-', '').ToLowerInvariant() }
+  finally { $Stream.Dispose(); $Hasher.Dispose() }
+  if ($Actual -cne $Expected) { throw 'Checksum mismatch.' }
   # .NET handles UTF-8 archive entry names without depending on the console code page.
   Add-Type -AssemblyName System.IO.Compression.FileSystem
   [IO.Compression.ZipFile]::ExtractToDirectory((Join-Path $Temp $File), $Temp)
