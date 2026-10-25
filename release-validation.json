@@ -1,241 +1,74 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "bundledCli": "0.4.12",
   "bundledNode": "22.23.3",
-  "recordedAt": "2026-10-25T17:17:56.923Z",
-  "publication": {
-    "website": "https://karmenloop.com/tui.html",
-    "github": "https://github.com/KarmenLoop/koder-tui/releases/tag/tui-0.3.0",
-    "deployId": "6ade38ce6148d718197804af",
-    "publishedAt": "2026-10-25T17:11:08.125Z",
-    "installerHotfixAt": "2026-10-25T17:15:20.560Z"
+  "status": "candidate",
+  "localRegression": {
+    "passed": 43,
+    "failed": 0
   },
-  "sourceParity": {
-    "filesCompared": 25846,
-    "changedRuntimeFiles": 0,
-    "comparison": "Published package payload against the accepted workbench candidate; no independent provider acceptance implied."
-  },
-  "beforePackaging": {
-    "workbenchNodeTestEntriesPassed": 40,
-    "namedWorkbenchTestsPassed": 39,
-    "targetedCliTestsPassed": 127,
-    "macosPtyInteractionChecksPassed": 10,
-    "macosPtyLauncherChecksPassed": 6,
-    "modelAndAccountCalls": "NOT_RUN"
-  },
-  "platformChecks": {
-    "url": "https://github.com/KarmenLoop/koder-tui/actions/runs/40214861097",
-    "sourceCommit": "0453d9bb6ee3c0f8501c9546cbbe33997d31486c",
-    "conclusion": "success",
-    "packages": [
-      {
-        "platform": "darwin",
-        "architecture": "arm64",
-        "package": "koder-tui-0.3.0-macos-arm64.tar.gz",
-        "sha256": "8d124cceca41f3de29099a5e3d001130804bcb849c0d3084b3d9c2c26db8247a",
-        "results": [
-          "archive_checksum_and_extraction",
-          "bundled_node_version_and_58_cli_routes",
-          "workbench_regression",
-          "isolated_install_and_launcher_with_unicode_and_spaces"
-        ],
-        "notRun": [
-          "live_model",
-          "real_account_writes",
-          "Windows_ConPTY_IME_GUI"
-        ]
-      },
-      {
-        "platform": "darwin",
-        "architecture": "x64",
-        "package": "koder-tui-0.3.0-macos-x64.tar.gz",
-        "sha256": "d0353bee605b977f3d4f2f1e62e5fa9390d072d20ce3dac90d15b495499c1fce",
-        "results": [
-          "archive_checksum_and_extraction",
-          "bundled_node_version_and_58_cli_routes",
-          "workbench_regression",
-          "isolated_install_and_launcher_with_unicode_and_spaces"
-        ],
-        "notRun": [
-          "live_model",
-          "real_account_writes",
-          "Windows_ConPTY_IME_GUI"
-        ]
-      },
-      {
-        "platform": "win32",
-        "architecture": "x64",
-        "package": "koder-tui-0.3.0-windows-x64.zip",
-        "sha256": "dcdb811e24c355f302f5cb98bc6950865569ca3825b5ede0f4c9bedd43b7a8f6",
-        "results": [
-          "archive_checksum_and_extraction",
-          "bundled_node_version_and_58_cli_routes",
-          "workbench_regression",
-          "isolated_install_and_launcher_with_unicode_and_spaces"
-        ],
-        "notRun": [
-          "live_model",
-          "real_account_writes",
-          "Windows_ConPTY_IME_GUI"
-        ]
-      }
-    ]
-  },
-  "publicWindowsInstall": {
-    "url": "https://github.com/KarmenLoop/koder-tui/actions/runs/40215581720",
-    "sourceCommit": "07825b0cb76ce75527f52c8cf73754125f56ea83",
-    "conclusion": "success",
+  "macosPty": {
+    "platform": "macOS arm64",
     "checks": [
-      "Official website CMD download using TLS 1.2 Windows PowerShell",
-      "Published CMD bootstrap downloads and runs the published PowerShell installer",
-      "Archive download and SHA-256 verification",
-      "Bundled runtime verification, per-user installation and installed launcher version"
+      "real_pty_start",
+      "queue_focus_first_character",
+      "bracketed_unicode_paste",
+      "submitted_exact_draft",
+      "escape_preserves_input",
+      "ctrl_c_preserves_session",
+      "clean_exit"
     ],
-    "environment": "GitHub-hosted windows-latest; an isolated install/profile, with no real model or account calls."
+    "firstCharacterEchoMs": 1.8907080000000187,
+    "liveProvider": false,
+    "userDeviceWindowsIme": "NOT_RUN"
   },
-  "publicReadback": {
-    "checkedAt": "2026-10-25T17:16:37.611Z",
-    "pages": [
-      "tui.html",
-      "en/tui.html",
-      "zh/index.html",
-      "updates.html",
-      "tutorial.html",
-      "products.html",
-      "en/updates.html",
-      "en/tutorial.html",
-      "en/products.html",
-      "en/index.html",
-      "en/download.html",
-      "en/cli.html",
-      "download.html",
-      "cli.html"
-    ],
-    "downloads": [
-      {
-        "name": "EULA.md",
-        "sha": "fa93cf1ce4834f04b899529a8a676ebee18d99725afad9c8d614940ba3351092",
-        "bytes": 12170,
-        "url": "https://karmenloop.com/install/tui-0.3.0/EULA.md"
-      },
-      {
-        "name": "Install-Koder-TUI.command",
-        "sha": "6c70460b4194b72680762a2e6a9918296df9e05efff14788cdc42f2e215e256b",
-        "bytes": 2299,
-        "url": "https://karmenloop.com/install/tui-0.3.0/Install-Koder-TUI.command"
-      },
-      {
-        "name": "RELEASE-NOTES.md",
-        "sha": "800a8ca40c0137aab9abe930a024f8346332a7d22b66c05170510ed558dcd719",
-        "bytes": 2120,
-        "url": "https://karmenloop.com/install/tui-0.3.0/RELEASE-NOTES.md"
-      },
-      {
-        "name": "koder-tui-0.3.0-macos-arm64.tar.gz",
-        "sha": "8d124cceca41f3de29099a5e3d001130804bcb849c0d3084b3d9c2c26db8247a",
-        "bytes": 171272039,
-        "url": "https://karmenloop.com/install/tui-0.3.0/koder-tui-0.3.0-macos-arm64.tar.gz"
-      },
-      {
-        "name": "koder-tui-0.3.0-macos-x64.tar.gz",
-        "sha": "d0353bee605b977f3d4f2f1e62e5fa9390d072d20ce3dac90d15b495499c1fce",
-        "bytes": 172488050,
-        "url": "https://karmenloop.com/install/tui-0.3.0/koder-tui-0.3.0-macos-x64.tar.gz"
-      },
-      {
-        "name": "koder-tui-0.3.0-windows-x64.zip",
-        "sha": "dcdb811e24c355f302f5cb98bc6950865569ca3825b5ede0f4c9bedd43b7a8f6",
-        "bytes": 170233844,
-        "url": "https://karmenloop.com/install/tui-0.3.0/koder-tui-0.3.0-windows-x64.zip"
-      },
-      {
-        "name": "koder-tui.cmd",
-        "sha": "b3ca6b69e50728864a02bb694cc2caef0602f5ba5a70d775cbf002cd8f3d6bf8",
-        "bytes": 1040,
-        "url": "https://karmenloop.com/install/tui-0.3.0/koder-tui.cmd"
-      },
-      {
-        "name": "koder-tui.ps1",
-        "sha": "d756a24aeb3c4569f4ac0f0ec1c4bf409b09ec5ddf192232d48399d0e256e247",
-        "bytes": 4943,
-        "url": "https://karmenloop.com/install/tui-0.3.0/koder-tui.ps1"
-      },
-      {
-        "name": "koder-tui.sh",
-        "sha": "6c70460b4194b72680762a2e6a9918296df9e05efff14788cdc42f2e215e256b",
-        "bytes": 2299,
-        "url": "https://karmenloop.com/install/tui-0.3.0/koder-tui.sh"
-      },
-      {
-        "name": "release.json",
-        "sha": "4bc1f8bae3a3f8e6cd45561ee5fd11b5dbc605d11b6b7e382eeef5bf0c742220",
-        "bytes": 613,
-        "url": "https://karmenloop.com/install/tui-0.3.0/release.json"
-      }
-    ],
-    "unchangedCliManifest": true,
-    "downloadStatsHttp200": true,
-    "unexpectedChanges": []
+  "inputBenchmark": {
+    "before": {
+      "samples": 45,
+      "historyChars": 156000,
+      "configBytes": 200061,
+      "meanMs": 27.827112911111115,
+      "p95Ms": 32.714041999999836,
+      "maxMs": 36.26325,
+      "configReadsDuringTyping": 132
+    },
+    "after": {
+      "samples": 45,
+      "historyChars": 156000,
+      "configBytes": 200061,
+      "meanMs": 2.739442511111114,
+      "p95Ms": 3.572708999999975,
+      "maxMs": 3.962874999999997,
+      "configReadsDuringTyping": 0
+    },
+    "environment": "Local macOS arm64 fixture, not a user-device measurement"
   },
-  "websiteTests": {
-    "focused": {
-      "passed": 39,
-      "failed": 0,
-      "skipped": 1
-    },
-    "existingBaselineFullSuite": {
-      "passed": 101,
-      "failed": 7,
-      "skipped": 1
-    },
-    "finalFullSuite": {
-      "passed": 104,
-      "failed": 4,
-      "skipped": 1
-    },
-    "remainingFailures": [
-      "Existing Windows desktop download count assertion",
-      "Existing download link allowlist",
-      "Existing public-copy vocabulary assertion",
-      "Existing three-installer assumption"
-    ],
-    "note": "These four assertions also failed against the copied production baseline. The full website suite is not green."
-  },
-  "earlierFailedChecks": [
+  "packages": [
     {
-      "run": 40213592352,
-      "reason": "Read-only Actions token could not download draft assets."
+      "file": "koder-tui-0.3.1-macos-arm64.tar.gz",
+      "size": 171273423,
+      "sha256": "903890dc309fb10d598cf1df8300bfcef0194a5caad875276ddfa1e4eb14f7aa"
     },
     {
-      "run": 40213732281,
-      "reason": "Windows Expand-Archive exceeded the validation deadline."
+      "file": "koder-tui-0.3.1-macos-x64.tar.gz",
+      "size": 172490057,
+      "sha256": "353e0d6ced2d263b665c441d4b73e37a0ea5c800445a0c576ced45eb923ddf50"
     },
     {
-      "run": 40214088221,
-      "reason": "Windows tar could not decode non-ASCII archive filenames."
-    },
-    {
-      "run": 40214665567,
-      "reason": "Windows PowerShell could not load Get-FileHash in the inherited module environment; all 39 workbench tests had passed."
-    },
-    {
-      "run": 40215238637,
-      "reason": "TLS 1.2 Invoke-WebRequest succeeded, but the strict curl comparison failed on an abruptly closed Schannel connection before installer execution. The public bootstrap now prefers Invoke-WebRequest and uses curl as fallback."
+      "file": "koder-tui-0.3.1-windows-x64.zip",
+      "size": 170234674,
+      "sha256": "11bccf49cb0fdd984382043ff2110a89727d04ab6bdea157e636f2e2f5eb4860"
     }
   ],
+  "hostedPlatformChecks": "PENDING",
+  "publicInstallCheck": "PENDING",
+  "agreementSha256": "fa93cf1ce4834f04b899529a8a676ebee18d99725afad9c8d614940ba3351092",
+  "previousRelease": "docs/releases/tui-0.3.0-validation.json",
   "notRun": [
-    "User-device Windows 10/11 ConPTY and IME interaction",
-    "Native Windows-MCP GUI operations",
-    "Live model providers and external ACP services",
+    "User-device Windows ConPTY and IME acceptance",
+    "Live providers and external ACP",
     "Real account writes",
     "Cross-device migration",
-    "Accessibility acceptance",
     "Signed desktop installer and notarization"
-  ],
-  "behaviorLimits": [
-    "Dedicated CLI screens temporarily take over the terminal.",
-    "External engine Todo and undo depend on adapter support.",
-    "Undo restores session metadata, not completed external effects.",
-    "CLI automatic update, /update and /uninstall retain their original CLI scope. Update TUI by rerunning the TUI installer."
   ]
 }

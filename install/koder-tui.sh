@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
-VERSION=0.3.0
-BASE="${KODER_TUI_DOWNLOAD_BASE:-https://github.com/KarmenLoop/koder-tui/releases/download/tui-0.3.0}"
+VERSION=0.3.1
+BASE="${KODER_TUI_DOWNLOAD_BASE:-https://github.com/KarmenLoop/koder-tui/releases/download/tui-0.3.1}"
 INSTALL_ROOT="${KODER_TUI_HOME:-$HOME/.koder-tui}"
 BIN_DIR="${KODER_TUI_BIN_DIR:-$HOME/.local/bin}"
-case "${1:-}" in --help|-h) echo 'Install Koder TUI 0.3.0 for macOS. KODER_TUI_HOME and KODER_TUI_BIN_DIR customize installation.'; exit 0;; esac
+case "${1:-}" in --help|-h) echo 'Install Koder TUI 0.3.1 for macOS. KODER_TUI_HOME and KODER_TUI_BIN_DIR customize installation.'; exit 0;; esac
 [[ "$(uname -s)" == Darwin ]] || { echo 'This installer requires macOS.' >&2; exit 1; }
 case "$(uname -m)" in arm64) ARCH=arm64;; x86_64) ARCH=x64;; *) echo 'Unsupported architecture' >&2; exit 1;; esac
 if [[ "${KODER_TUI_EULA_ACCEPT:-}" != 1 ]]; then

@@ -1,7 +1,7 @@
 param([string]$InstallRoot = $env:KODER_TUI_HOME, [string]$DownloadBase = $env:KODER_TUI_DOWNLOAD_BASE)
 $ErrorActionPreference = 'Stop'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$Version = '0.3.0'
+$Version = '0.3.1'
 $ProgressPreference = 'SilentlyContinue'
 function Get-KoderFile([string]$Url, [string]$Destination, [int]$Timeout = 600) {
   $LastFailure = $null
@@ -21,7 +21,7 @@ function Get-KoderFile([string]$Url, [string]$Destination, [int]$Timeout = 600) 
   throw "Download failed: $Url. Check your network/proxy or download the archive in a browser. $LastFailure"
 }
 if (!$InstallRoot) { $InstallRoot = Join-Path $env:LOCALAPPDATA 'koder-tui' }
-$Bases = if ($DownloadBase) { @($DownloadBase.TrimEnd('/')) } else { @('https://karmenloop.com/install/tui-0.3.0', 'https://github.com/KarmenLoop/koder-tui/releases/download/tui-0.3.0') }
+$Bases = if ($DownloadBase) { @($DownloadBase.TrimEnd('/')) } else { @('https://karmenloop.com/install/tui-0.3.1', 'https://github.com/KarmenLoop/koder-tui/releases/download/tui-0.3.1') }
 if (![Environment]::Is64BitOperatingSystem) { throw 'Koder TUI requires 64-bit Windows.' }
 if ($env:KODER_TUI_EULA_ACCEPT -ne '1') {
   Write-Host 'Koder TUI is free for personal, noncommercial use under Koder-EULA-1.1.'

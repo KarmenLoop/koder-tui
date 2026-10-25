@@ -10,7 +10,7 @@ Workbench implementation files were included in earlier commits. Those historica
 
 ## Runtime packages
 
-Windows x64 and both macOS packages for TUI 0.3.0 include the same EULA and explicitly identify Koder-EULA-1.1 in their version metadata. They contain the readable scripts required to run Koder. Readable runtime files do not grant permission to modify, repackage or redistribute proprietary implementation beyond the EULA's terms and applicable exceptions.
+Windows x64 and both macOS packages for TUI 0.3.1 include the same EULA and explicitly identify Koder-EULA-1.1 in their version metadata. They contain the readable scripts required to run Koder. Readable runtime files do not grant permission to modify, repackage or redistribute proprietary implementation beyond the EULA's terms and applicable exceptions.
 
 Personal, noncommercial local use is free. Commercial use, internal organizational work and deployment, proprietary implementation changes and redistribution require the permissions described in the EULA. Supported configuration and independently authored extensions remain available within the licensed scope.
 

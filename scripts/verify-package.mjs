@@ -5,7 +5,7 @@ import crypto from 'node:crypto';
 import {spawn} from 'node:child_process';
 import http from 'node:http';
 const root=process.cwd(),dir=path.join(root,'artifacts'),platform=process.platform==='win32'?'windows-x64':`macos-${process.arch}`;
-const name=`koder-tui-0.3.0-${platform}${process.platform==='win32'?'.zip':'.tar.gz'}`;
+const name=`koder-tui-0.3.1-${platform}${process.platform==='win32'?'.zip':'.tar.gz'}`;
 const sums=fs.readFileSync(path.join(dir,'SHA256SUMS'),'utf8');
 const expected=sums.split('\n').find(l=>l.endsWith('  '+name))?.split(' ')[0];
 if(!expected||crypto.createHash('sha256').update(fs.readFileSync(path.join(dir,name))).digest('hex')!==expected)throw Error('Package checksum mismatch');
@@ -23,9 +23,10 @@ results.push('archive_checksum_and_extraction');
 const pkg=path.join(dir,'koder-tui'),node=path.join(pkg,process.platform==='win32'?'runtime/node.exe':'runtime/bin/node'),entry=path.join(pkg,'packages/koder-tui/bin/koder-tui.mjs');
 const home=fs.mkdtempSync(path.join(os.tmpdir(),'koder-tui-release-'));
 const env={...process.env,KODER_AUTO_UPDATE:'0',TERM:'xterm-256color',KODER_CLI_HOME:path.join(home,'profile'),KODER_TUI_EULA_ACCEPT:'1'};
-if(!(await run(node,[entry,'--version'],{env})).includes('koder-tui 0.3.0 (CLI 0.4.12)'))throw Error('Wrong version');
+if(!(await run(node,[entry,'--version'],{env})).includes('koder-tui 0.3.1 (CLI 0.4.12)'))throw Error('Wrong version');
 const modules=JSON.parse(await run(node,[entry,'--list-modules','--json'],{env}));if(modules.length!==58)throw Error('Missing CLI routes');
 await run(node,[entry,'--','help'],{env});results.push('bundled_node_version_and_58_cli_routes');
+await run(node,[path.join(root,'scripts/check-input.mjs'),pkg],{env});results.push('queue_focus_unicode_paste_and_streaming_input');
 // Private regression suites run before publication. This public check validates release artifacts.
 const server=http.createServer((req,res)=>{
  const file=path.basename(new URL(req.url,'http://localhost').pathname);

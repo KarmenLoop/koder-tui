@@ -19,9 +19,11 @@ jobs:
           $env:KODER_TUI_HOME = Join-Path $env:RUNNER_TEMP 'public-tui'
           $env:KODER_CLI_HOME = Join-Path $env:RUNNER_TEMP 'isolated-profile'
           $bootstrap = Join-Path $env:RUNNER_TEMP 'koder-tui-install.cmd'
-          Invoke-WebRequest -UseBasicParsing 'https://karmenloop.com/install/tui-0.3.0/koder-tui.cmd' -OutFile $bootstrap -TimeoutSec 90
+          Invoke-WebRequest -UseBasicParsing 'https://karmenloop.com/install/tui-0.3.1/koder-tui.cmd' -OutFile $bootstrap -TimeoutSec 90
           & $bootstrap
           if ($LASTEXITCODE -ne 0) { throw 'Public bootstrap failed.' }
-          & (Join-Path $env:KODER_TUI_HOME 'bin/koder-tui.cmd') --version
+          $version = & (Join-Path $env:KODER_TUI_HOME 'bin/koder-tui.cmd') --version
+          if ($version -notmatch 'koder-tui 0.3.1 \(CLI 0.4.12\)') { throw 'Unexpected installed version.' }
+          Write-Host $version
           if ($LASTEXITCODE -ne 0) { throw 'Installed launcher failed.' }
           Write-Host 'PUBLIC_WINDOWS_POWERSHELL_5_INSTALL_PASS'

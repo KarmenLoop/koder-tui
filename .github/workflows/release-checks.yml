@@ -21,7 +21,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           PLATFORM=$(node -p 'process.platform === "win32" ? "windows-x64.zip" : "macos-" + process.arch + ".tar.gz"')
-          gh release download tui-0.3.0 --repo KarmenLoop/koder-tui --dir artifacts --pattern "koder-tui-0.3.0-$PLATFORM" --pattern SHA256SUMS
+          gh release download tui-0.3.1 --repo KarmenLoop/koder-tui --dir artifacts --pattern "koder-tui-0.3.1-$PLATFORM" --pattern SHA256SUMS
       - name: Verify archive, modules and installer
         run: node scripts/verify-package.mjs
       - uses: actions/upload-artifact@v4

@@ -4,9 +4,9 @@
 
 | Computer | Archive |
 | --- | --- |
-| Windows 10/11 x64 | koder-tui-0.3.0-windows-x64.zip |
-| Mac with Apple Silicon | koder-tui-0.3.0-macos-arm64.tar.gz |
-| Mac with Intel processor | koder-tui-0.3.0-macos-x64.tar.gz |
+| Windows 10/11 x64 | koder-tui-0.3.1-windows-x64.zip |
+| Mac with Apple Silicon | koder-tui-0.3.1-macos-arm64.tar.gz |
+| Mac with Intel processor | koder-tui-0.3.1-macos-x64.tar.gz |
 
 Node.js 22.23.3 is included. Windows ARM64 native builds and Linux bundles are not provided in this release. These terminal packages are not MSI, EXE, PKG or DMG installers and are not signed or notarized desktop applications. Inspect the publisher and archive checksum before opening downloaded code; do not disable system protection globally.
 
@@ -17,7 +17,7 @@ The optional installation scripts add a persistent command. macOS uses ~/.koder-
 ## Configure and start
 
 1. Open Terminal or Windows Terminal.
-2. Run `koder-tui --version`. Expect TUI 0.3.0 and CLI 0.4.12.
+2. Run `koder-tui --version`. Expect TUI 0.3.1 and CLI 0.4.12.
 3. Run `koder-tui -- setup`. Configure a model provider and engine using the same setup as Koder CLI.
 4. Run `koder-tui -w "/path/to/project"`. On Windows, quote a path such as `C:\Users\Name\Projects\My Project`.
 5. Enter a request. Review any permission prompt before approving a tool.
@@ -66,4 +66,10 @@ The release notes list actual package and CI results. Local PTY tests cover comp
 
 ## Windows download errors
 
-If PowerShell reports an unexpectedly closed connection, the script has not downloaded. Do not run -File on a missing file. Download [the CMD installer](https://karmenloop.com/install/tui-0.3.0/koder-tui.cmd) in your browser and open it, or follow the TLS 1.2 PowerShell command in the README. The installer enables TLS 1.2, retries downloads, falls back to curl.exe, and tries the official site and GitHub. It stops if both sources fail. Do not disable certificate validation. A managed network may require its normal proxy configuration.
+If PowerShell reports an unexpectedly closed connection, the script has not downloaded. Do not run -File on a missing file. Download [the CMD installer](https://karmenloop.com/install/tui-0.3.1/koder-tui.cmd) in your browser and open it, or follow the TLS 1.2 PowerShell command in the README. The installer enables TLS 1.2, retries downloads, falls back to curl.exe, and tries the official site and GitHub. It stops if both sources fail. Do not disable certificate validation. A managed network may require its normal proxy configuration.
+
+## Input responsiveness
+
+In 0.3.1, typing or pasting while the queue is focused returns to the composer and keeps that input. Queue arrows, reordering and Delete still act on queued items. Fresh approval prompts keep their separate answer field.
+
+The workbench prioritizes input, reuses completed output lines and avoids synchronous configuration reads for each key. The decorative loop has been removed. If input still stalls, report the terminal name, OS version, keyboard/input method and whether a task was streaming or the queue was focused.
