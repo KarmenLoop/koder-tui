@@ -2,7 +2,7 @@ name: Release package checks
 on:
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write # GitHub requires push access to read unpublished release assets.
 jobs:
   verify:
     strategy:
