@@ -1,0 +1,30 @@
+name: Public Windows installer check
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-install:
+    runs-on: windows-latest
+    steps:
+      - name: Download and install from the public website
+        shell: powershell
+        env:
+          KODER_TUI_EULA_ACCEPT: '1'
+          KODER_AUTO_UPDATE: '0'
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $ProgressPreference = 'SilentlyContinue'
+          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+          $env:KODER_TUI_HOME = Join-Path $env:RUNNER_TEMP 'public-tui'
+          $env:KODER_CLI_HOME = Join-Path $env:RUNNER_TEMP 'isolated-profile'
+          $script = Join-Path $env:RUNNER_TEMP 'koder-tui.ps1'
+          $legacy = Join-Path $env:RUNNER_TEMP 'koder-tui-iwr.ps1'
+          Invoke-WebRequest -UseBasicParsing 'https://karmenloop.com/install/tui-0.3.0/koder-tui.ps1' -OutFile $legacy -TimeoutSec 90
+          & curl.exe --fail --location --retry 3 --connect-timeout 20 --max-time 120 --output $script 'https://karmenloop.com/install/tui-0.3.0/koder-tui.ps1'
+          if ($LASTEXITCODE -ne 0 -or !(Test-Path $script)) { throw 'Installer download failed; stop.' }
+          if ((Get-FileHash $script).Hash -ne (Get-FileHash $legacy).Hash) { throw 'The two download methods disagree.' }
+          & $script
+          & (Join-Path $env:KODER_TUI_HOME 'bin/koder-tui.cmd') --version
+          if ($LASTEXITCODE -ne 0) { throw 'Installed launcher failed.' }
+          Write-Host 'PUBLIC_WINDOWS_POWERSHELL_5_INSTALL_PASS'
